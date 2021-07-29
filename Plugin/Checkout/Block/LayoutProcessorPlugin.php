@@ -11,10 +11,9 @@ class LayoutProcessorPlugin
      * @param array $jsLayout
      * @return array
      */
-    public function afterProcess(LayoutProcessor $subject, array $jsLayout)
+    public function afterProcess(LayoutProcessor $subject, array $jsLayout): array
     {
-        $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']
-        ['shippingAddress']['children']['shipping-address-fieldset']['children']['custom_field_text'] = [
+        $customField = [
             'component' => 'Magento_Ui/js/form/element/abstract',
             'config' => [
                 'customScope' => 'shippingAddress.custom_attributes',
@@ -35,6 +34,10 @@ class LayoutProcessorPlugin
             /*'customEntry' => null,*/
             'id' => 'custom-field-text'
         ];
+
+        $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']
+        ['shippingAddress']['children']['before-form']['children']['custom_field_text'] = $customField;
+
         return $jsLayout;
     }
 }

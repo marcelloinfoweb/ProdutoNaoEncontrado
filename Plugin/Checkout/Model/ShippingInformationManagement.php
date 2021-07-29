@@ -2,6 +2,7 @@
 
 namespace Funarbe\CheckoutCustomField\Plugin\Checkout\Model;
 
+use Magento\Checkout\Api\Data\ShippingInformationInterface;
 use Magento\Quote\Model\QuoteRepository;
 
 class ShippingInformationManagement
@@ -17,7 +18,7 @@ class ShippingInformationManagement
     public function beforeSaveAddressInformation(
         \Magento\Checkout\Model\ShippingInformationManagement $subject,
         $cartId,
-        \Magento\Checkout\Api\Data\ShippingInformationInterface $addressInformation
+        ShippingInformationInterface $addressInformation
     ) {
         if (!$extAttributes = $addressInformation->getExtensionAttributes()) {
             return;

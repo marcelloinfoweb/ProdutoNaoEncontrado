@@ -9,7 +9,6 @@ define([
     'Magento_Checkout/js/model/error-processor',
     'Magento_Checkout/js/model/full-screen-loader',
     'Magento_Checkout/js/action/select-billing-address',
-    // 'Magento_Checkout/js/model/shipping-save-processor/payload-extender'
 ], function (
     $,
     ko,
@@ -21,19 +20,18 @@ define([
     errorProcessor,
     fullScreenLoader,
     selectBillingAddressAction,
-    // payloadExtender
 ) {
     'use strict';
-    return {
 
+    return {
         saveShippingInformation: function () {
             let payload;
-            
+
             const customFieldText = $('[name="custom_attributes[custom_field_text]"]').val();
 
-            // if (!quote.billingAddress() && quote.shippingAddress().canUseForBilling()) {
-            //     selectBillingAddressAction(quote.shippingAddress());
-            // }
+            if (!quote.billingAddress() && quote.shippingAddress().canUseForBilling()) {
+                selectBillingAddressAction(quote.shippingAddress());
+            }
 
             payload = {
                 addressInformation: {
@@ -46,8 +44,6 @@ define([
                     }
                 }
             };
-
-            // payloadExtender(payload);
 
             fullScreenLoader.startLoader();
 
