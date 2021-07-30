@@ -7,7 +7,6 @@ use Magento\Quote\Model\QuoteRepository;
 
 class ShippingInformationManagement
 {
-
     protected $quoteRepository;
 
     public function __construct(QuoteRepository $quoteRepository)

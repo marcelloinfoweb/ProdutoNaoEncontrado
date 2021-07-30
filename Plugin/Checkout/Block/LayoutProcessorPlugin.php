@@ -13,30 +13,39 @@ class LayoutProcessorPlugin
      */
     public function afterProcess(LayoutProcessor $subject, array $jsLayout): array
     {
+
         $customField = [
-            'component' => 'Magento_Ui/js/form/element/abstract',
+            'component' => 'Magento_Ui/js/form/element/checkbox-set',
             'config' => [
                 'customScope' => 'shippingAddress.custom_attributes',
-                'customEntry' => null,
                 'template' => 'ui/form/field',
-                'elementTmpl' => 'ui/form/element/input',
-                'options' => [],
-                'id' => 'custom-field-text'
+                'elementTmpl' => 'ui/form/element/checkbox-set',
+                'options' => [
+                    [
+                        'value' => 'Ligar',
+                        'label' => 'Ligar',
+                    ],
+                    [
+                        'value' => 'Substituir',
+                        'label' => 'Substituir',
+                    ],
+                    [
+                        'value' => 'Retirar',
+                        'label' => 'Retirar',
+                    ]
+                ],
             ],
             'dataScope' => 'shippingAddress.custom_attributes.custom_field_text',
-            'label' => 'Custom Field Text',
+            'label' => 'O que fazer se o produto não estiver disponível?',
             'provider' => 'checkoutProvider',
             'visible' => true,
+            'sortOrder' => 0,
             'validation' => [
                 'required-entry' => true
-            ],
-            'sortOrder' => 250,
-            /*'customEntry' => null,*/
-            'id' => 'custom-field-text'
+            ]
         ];
 
-        $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']
-        ['shippingAddress']['children']['before-form']['children']['custom_field_text'] = $customField;
+        $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']['shippingAddress']['children']['before-form']['children']['custom_field_text'] = $customField;
 
         return $jsLayout;
     }
