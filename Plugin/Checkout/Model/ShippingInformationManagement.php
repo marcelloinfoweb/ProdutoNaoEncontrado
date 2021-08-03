@@ -1,6 +1,6 @@
 <?php
 
-namespace Funarbe\CheckoutCustomField\Plugin\Checkout\Model;
+namespace Funarbe\ProdutoNaoEncontrado\Plugin\Checkout\Model;
 
 use Magento\Checkout\Api\Data\ShippingInformationInterface;
 use Magento\Quote\Model\QuoteRepository;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Funarbe\CheckoutCustomField\Observer;
+namespace Funarbe\ProdutoNaoEncontrado\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;

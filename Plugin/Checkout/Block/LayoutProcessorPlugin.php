@@ -1,6 +1,6 @@
 <?php
 
-namespace Funarbe\CheckoutCustomField\Plugin\Checkout\Block;
+namespace Funarbe\ProdutoNaoEncontrado\Plugin\Checkout\Block;
 
 use Magento\Checkout\Block\Checkout\LayoutProcessor;
 
@@ -23,7 +23,7 @@ class LayoutProcessorPlugin
             'config' => [
                 'customScope' => 'shippingAddress.custom_attributes',
                 'template' => 'ui/form/field',
-                'elementTmpl' => 'Funarbe_CheckoutCustomField/radio',
+                'elementTmpl' => 'Funarbe_ProdutoNaoEncontrado/radio',
                 'options' => [
                     [
                         'value' => 'Ligar',
