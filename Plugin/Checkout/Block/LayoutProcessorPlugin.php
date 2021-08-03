@@ -13,13 +13,12 @@ class LayoutProcessorPlugin
      */
     public function afterProcess(LayoutProcessor $subject, array $jsLayout): array
     {
-
         $customField = [
             'component' => 'Magento_Ui/js/form/element/checkbox-set',
             'config' => [
                 'customScope' => 'shippingAddress.custom_attributes',
                 'template' => 'ui/form/field',
-                'elementTmpl' => 'ui/form/element/checkbox-set',
+                'elementTmpl' => 'Funarbe_CheckoutCustomField/radio',
                 'options' => [
                     [
                         'value' => 'Ligar',
@@ -36,16 +35,17 @@ class LayoutProcessorPlugin
                 ],
             ],
             'dataScope' => 'shippingAddress.custom_attributes.custom_field_text',
-            'label' => 'O que fazer se o produto não estiver disponível?',
+            // 'label' => 'O que fazer se o produto não estiver disponível?',
             'provider' => 'checkoutProvider',
             'visible' => true,
-            'sortOrder' => 0,
+            'sortOrder' => 10,
             'validation' => [
                 'required-entry' => true
             ]
         ];
 
-        $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']['shippingAddress']['children']['before-form']['children']['custom_field_text'] = $customField;
+        $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']
+        ['step-config']['children']['custom_field_text'] = $customField;
 
         return $jsLayout;
     }
