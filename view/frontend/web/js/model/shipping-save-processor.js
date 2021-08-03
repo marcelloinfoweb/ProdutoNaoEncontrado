@@ -27,7 +27,7 @@ define([
         saveShippingInformation: function () {
             let payload;
 
-            const customFieldText = $('input[name="opcao-produto"]:checked').val();
+            const casoProdutoNaoEncontrado = $('input[name="opcao-produto"]:checked').val();
 
             if (!quote.billingAddress() && quote.shippingAddress().canUseForBilling()) {
                 selectBillingAddressAction(quote.shippingAddress());
@@ -40,7 +40,7 @@ define([
                     shipping_method_code: quote.shippingMethod()['method_code'],
                     shipping_carrier_code: quote.shippingMethod()['carrier_code'],
                     extension_attributes: {
-                        custom_field_text: customFieldText
+                        caso_produto_nao_encontrado: casoProdutoNaoEncontrado
                     }
                 }
             };

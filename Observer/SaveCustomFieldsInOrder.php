@@ -13,7 +13,7 @@ class SaveCustomFieldsInOrder implements ObserverInterface
         $order = $observer->getEvent()->getOrder();
         $quote = $observer->getEvent()->getQuote();
 
-        $order->setData('custom_field_text', $quote->getCustomFieldText());
+        $order->setData('caso_produto_nao_encontrado', $quote->getCasoProdutoNaoEncontrado());
 
         return $this;
     }

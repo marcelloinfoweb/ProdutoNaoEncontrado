@@ -44,7 +44,7 @@ class LayoutProcessorPlugin
                     ]
                 ],
             ],
-            'dataScope' => 'shippingAddress.custom_attributes.custom_field_text',
+            'dataScope' => 'shippingAddress.custom_attributes.caso_produto_nao_encontrado',
             // 'label' => 'O que fazer se o produto não estiver disponível?',
             'provider' => 'checkoutProvider',
             'visible' => true,
@@ -56,7 +56,7 @@ class LayoutProcessorPlugin
 
         $jsLayout['components']['checkout']['children']['steps']['children']
         ['shipping-step']['children']['shippingAddress']['children']['before-form']
-        ['children']['custom_field_text'] = $customField;
+        ['children']['caso_produto_nao_encontrado'] = $customField;
 
         return $jsLayout;
     }

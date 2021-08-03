@@ -24,6 +24,6 @@ class ShippingInformationManagement
         }
 
         $quote = $this->quoteRepository->getActive($cartId);
-        $quote->setCustomFieldText($extAttributes->getCustomFieldText());
+        $quote->setCasoProdutoNaoEncontrado($extAttributes->getCasoProdutoNaoEncontrado());
     }
 }
