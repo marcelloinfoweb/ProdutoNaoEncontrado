@@ -3,11 +3,11 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
 
     <table name="quote" resource="default" engine="innodb">
-        <column xsi:type="varchar" name="caso_produto_nao_encontrado" nullable="true" length="40" comment="Custom Field Text"/>
+        <column xsi:type="varchar" name="caso_produto_nao_encontrado" nullable="true" length="40" comment="Caso o produto não seja encontrado."/>
     </table>
 
     <table name="sales_order" resource="default" engine="innodb">
-        <column xsi:type="varchar" name="caso_produto_nao_encontrado" nullable="true" length="40" comment="Custom Field Text"/>
+        <column xsi:type="varchar" name="caso_produto_nao_encontrado" nullable="true" length="40" comment="Caso o produto não seja encontrado."/>
     </table>
 
 </schema>
