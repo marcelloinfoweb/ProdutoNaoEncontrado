@@ -4,11 +4,16 @@ namespace Funarbe\CheckoutCustomField\Plugin\Checkout\Block;
 
 use Magento\Checkout\Block\Checkout\LayoutProcessor;
 
+/**
+ * LayoutProcessorPlugin
+ */
 class LayoutProcessorPlugin
 {
     /**
-     * @param LayoutProcessor $subject
-     * @param array $jsLayout
+     * Custom checkot Field
+     *
+     * @param  LayoutProcessor $subject
+     * @param  array           $jsLayout
      * @return array
      */
     public function afterProcess(LayoutProcessor $subject, array $jsLayout): array
@@ -23,14 +28,19 @@ class LayoutProcessorPlugin
                     [
                         'value' => 'Ligar',
                         'label' => 'Ligar',
+                        'name' => 'opcao-produto'
                     ],
                     [
                         'value' => 'Substituir',
                         'label' => 'Substituir',
+                        'name' => 'opcao-produto'
+
                     ],
                     [
                         'value' => 'Retirar',
                         'label' => 'Retirar',
+                        'name' => 'opcao-produto'
+
                     ]
                 ],
             ],
@@ -44,8 +54,9 @@ class LayoutProcessorPlugin
             ]
         ];
 
-        $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']
-        ['step-config']['children']['custom_field_text'] = $customField;
+        $jsLayout['components']['checkout']['children']['steps']['children']
+        ['shipping-step']['children']['shippingAddress']['children']['before-form']
+        ['children']['custom_field_text'] = $customField;
 
         return $jsLayout;
     }

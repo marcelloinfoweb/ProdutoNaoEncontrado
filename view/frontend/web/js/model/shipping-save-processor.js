@@ -27,7 +27,7 @@ define([
         saveShippingInformation: function () {
             let payload;
 
-            const customFieldText = $('.admin__control-radio').val();
+            const customFieldText = $('input[name="opcao-produto"]:checked').val();
 
             if (!quote.billingAddress() && quote.shippingAddress().canUseForBilling()) {
                 selectBillingAddressAction(quote.shippingAddress());
