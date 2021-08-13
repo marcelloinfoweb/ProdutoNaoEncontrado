@@ -26,19 +26,19 @@ class LayoutProcessorPlugin
                 'elementTmpl' => 'Funarbe_ProdutoNaoEncontrado/radio',
                 'options' => [
                     [
-                        'value' => 'Ligar',
-                        'label' => 'Ligar',
+                        'value' => 'Me Ligar',
+                        'label' => 'Me Ligar',
                         'name' => 'opcao-produto'
                     ],
                     [
-                        'value' => 'Substituir',
-                        'label' => 'Substituir',
+                        'value' => 'Substituir Por Similar',
+                        'label' => 'Substituir Por Similar',
                         'name' => 'opcao-produto'
 
                     ],
                     [
-                        'value' => 'Retirar',
-                        'label' => 'Retirar',
+                        'value' => 'Excluir Produto',
+                        'label' => 'Excluir Produto',
                         'name' => 'opcao-produto'
 
                     ]
