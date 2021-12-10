@@ -2,13 +2,9 @@
 
 namespace Funarbe\ProdutoNaoEncontrado\Observer;
 
-use Magento\Framework\Event\Observer;
-use Magento\Framework\Event\ObserverInterface;
-
-class SaveCustomFieldsInOrder implements ObserverInterface
+class SaveCustomFieldsInOrder implements \Magento\Framework\Event\ObserverInterface
 {
-
-    public function execute(Observer $observer)
+    public function execute(\Magento\Framework\Event\Observer $observer)
     {
         $order = $observer->getEvent()->getOrder();
         $quote = $observer->getEvent()->getQuote();

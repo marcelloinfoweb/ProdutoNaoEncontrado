@@ -2,21 +2,24 @@
 
 namespace Funarbe\ProdutoNaoEncontrado\Block\Adminhtml\Order\View;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\View\Element\Template;
 
-class View extends \Magento\Backend\Block\Template
+class View extends Template
 {
 
-    public function getCasoProdutoNaoEncontrar()
+    public function getCasoProdutoNaoEncontrar(): string
     {
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
-        $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+        // Instance of object manager
+        $resource = ObjectManager::getInstance()->get(ResourceConnection::class);
         $connection = $resource->getConnection();
-        $tableName = $resource->getTableName('sales_order'); //gives table name with prefix
+        $tableName = $resource->getTableName('sales_order');
         $orderId = $this->_request->getParam('order_id');
         //Select Data from table
         $sql = "Select caso_produto_nao_encontrado FROM " . $tableName . " WHERE entity_id = " .$orderId;
-        return $connection->fetchOne($sql); // gives associated array, table fields as key in array.
+
+        return $connection->fetchOne($sql);
 
 
 //        $orderId = $this->_request->getParam('order_id');

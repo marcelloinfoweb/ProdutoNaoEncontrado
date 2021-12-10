@@ -2,22 +2,22 @@
 
 namespace Funarbe\ProdutoNaoEncontrado\Plugin\Checkout\Model;
 
-use Magento\Checkout\Api\Data\ShippingInformationInterface;
-use Magento\Quote\Model\QuoteRepository;
-
 class ShippingInformationManagement
 {
     protected $quoteRepository;
 
-    public function __construct(QuoteRepository $quoteRepository)
+    public function __construct(\Magento\Quote\Model\QuoteRepository $quoteRepository)
     {
         $this->quoteRepository = $quoteRepository;
     }
 
+    /**
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function beforeSaveAddressInformation(
         \Magento\Checkout\Model\ShippingInformationManagement $subject,
         $cartId,
-        ShippingInformationInterface $addressInformation
+        \Magento\Checkout\Api\Data\ShippingInformationInterface $addressInformation
     ) {
         if (!$extAttributes = $addressInformation->getExtensionAttributes()) {
             return;

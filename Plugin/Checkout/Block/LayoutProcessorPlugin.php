@@ -10,7 +10,7 @@ use Magento\Checkout\Block\Checkout\LayoutProcessor;
 class LayoutProcessorPlugin
 {
     /**
-     * Custom checkot Field
+     * Custom checkout Field
      *
      * @param  LayoutProcessor $subject
      * @param  array           $jsLayout
@@ -34,13 +34,11 @@ class LayoutProcessorPlugin
                         'value' => 'Substituir Por Similar',
                         'label' => 'Substituir Por Similar',
                         'name' => 'opcao-produto'
-
                     ],
                     [
                         'value' => 'Excluir Produto',
                         'label' => 'Excluir Produto',
                         'name' => 'opcao-produto'
-
                     ]
                 ],
             ],
@@ -55,8 +53,8 @@ class LayoutProcessorPlugin
         ];
 
         $jsLayout['components']['checkout']['children']['steps']['children']
-        ['shipping-step']['children']['shippingAddress']['children']['before-form']
-        ['children']['caso_produto_nao_encontrado'] = $customField;
+        ['shipping-step']['children']['shippingAddress']['children']['shippingAdditional']
+        ['children']['additional_block'] = $customField;
 
         return $jsLayout;
     }
