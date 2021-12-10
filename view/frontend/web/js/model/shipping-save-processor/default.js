@@ -14,22 +14,21 @@ define([
         return {
             saveShippingInformation: function () {
                 $('body').trigger('processStart');
-                var deliveryfee = $('[name="custom-fee"]').val();
+                let deliveryfee = $('[name="custom-fee"]').val();
                 if (!deliveryfee) {
                     deliveryfee = 0;
                 }
-                ;
 
                 const casoProdutoNaoEncontrado = $('input[name="opcao-produto"]:checked').val();
 
-                var deliveryCall = 0;
-                if ($('[name="delivery_call"]').prop("checked") == true) {
+                let deliveryCall = 0;
+                if ($('[name="delivery_call"]').prop("checked") === true) {
                     deliveryCall = 1;
                 } else {
                     deliveryCall = 0;
                 }
 
-                var payload = {
+                const payload = {
                     addressInformation: {
                         shipping_address: quote.shippingAddress(),
                         shipping_method_code: quote.shippingMethod().method_code,

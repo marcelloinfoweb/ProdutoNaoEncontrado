@@ -12,8 +12,8 @@ class LayoutProcessorPlugin
     /**
      * Custom checkout Field
      *
-     * @param  LayoutProcessor $subject
-     * @param  array           $jsLayout
+     * @param LayoutProcessor $subject
+     * @param array $jsLayout
      * @return array
      */
     public function afterProcess(LayoutProcessor $subject, array $jsLayout): array
@@ -46,7 +46,7 @@ class LayoutProcessorPlugin
             // 'label' => 'O que fazer se o produto não estiver disponível?',
             'provider' => 'checkoutProvider',
             'visible' => true,
-            'sortOrder' => 10,
+//            'sortOrder' => 10,
             'validation' => [
                 'required-entry' => true
             ]
