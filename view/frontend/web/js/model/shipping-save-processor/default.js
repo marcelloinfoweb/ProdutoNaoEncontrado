@@ -1,15 +1,29 @@
 /*global define*/
 define([
+    'jquery',
         'ko',
-        'jquery',
         'Magento_Checkout/js/model/quote',
         'Magento_Checkout/js/model/resource-url-manager',
         'mage/storage',
         'Magento_Checkout/js/model/payment-service',
         'Magento_Checkout/js/model/payment/method-converter',
         'Magento_Checkout/js/model/error-processor',
-        'loader'
-    ], function (ko, $, quote, resourceUrlManager, storage, paymentService, methodConverter, errorProcessor) {
+        'Magento_Checkout/js/model/full-screen-loader',
+        'Magento_Checkout/js/action/select-billing-address',
+        'Magento_Checkout/js/model/shipping-save-processor/payload-extender'
+    ], function (
+        $,
+        ko,
+        quote,
+        resourceUrlManager,
+        storage,
+        paymentService,
+        methodConverter,
+        errorProcessor,
+        fullScreenLoader,
+        selectBillingAddressAction,
+        payloadExtender
+    ) {
         'use strict';
         return {
             saveShippingInformation: function () {
@@ -20,6 +34,18 @@ define([
                 }
 
                 const casoProdutoNaoEncontrado = $('input[name="opcao-produto"]:checked').val();
+
+                if (!casoProdutoNaoEncontrado) {
+                    fullScreenLoader.stopLoader()
+                    // this.errorValidationMessage('Opção obrigatorio');
+                    // return false;
+                    $('.message.notice').hide()
+                   $('.mensagem-erro').html(
+                       '<div role="alert" class="message notice">\n' +
+                       '<span>Marque uma das opções acima.</span>\n' +
+                       '</div>')
+                    return false
+                }
 
                 let deliveryCall = 0;
                 if ($('[name="delivery_call"]').prop("checked") === true) {
@@ -44,6 +70,10 @@ define([
                     }
                 };
 
+                payloadExtender(payload);
+
+                fullScreenLoader.startLoader();
+
                 return storage.post(
                     resourceUrlManager.getUrlForSetShippingInformation(quote),
                     JSON.stringify(payload)
@@ -52,11 +82,13 @@ define([
                         $('body').trigger('processStop');
                         quote.setTotals(response.totals);
                         paymentService.setPaymentMethods(methodConverter(response.payment_methods));
+                        fullScreenLoader.stopLoader();
                     }
                 ).fail(
                     function (response) {
                         $('body').trigger('processStop');
                         errorProcessor.process(response);
+                        fullScreenLoader.stopLoader();
                     }
                 );
             }
