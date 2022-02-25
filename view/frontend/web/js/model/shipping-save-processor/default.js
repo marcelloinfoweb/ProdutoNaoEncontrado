@@ -1,6 +1,6 @@
 /*global define*/
 define([
-    'jquery',
+        'jquery',
         'ko',
         'Magento_Checkout/js/model/quote',
         'Magento_Checkout/js/model/resource-url-manager',
@@ -37,13 +37,11 @@ define([
 
                 if (!casoProdutoNaoEncontrado) {
                     fullScreenLoader.stopLoader()
-                    // this.errorValidationMessage('Opção obrigatorio');
-                    // return false;
                     $('.message.notice').hide()
-                   $('.mensagem-erro').html(
-                       '<div role="alert" class="message notice">\n' +
-                       '<span>Marque uma das opções acima.</span>\n' +
-                       '</div>')
+                    $('.mensagem-erro').html(
+                        '<div role="alert" class="message notice">\n' +
+                        '   <span>Marque uma das opções acima.</span>\n' +
+                        '</div>')
                     return false
                 }
 
