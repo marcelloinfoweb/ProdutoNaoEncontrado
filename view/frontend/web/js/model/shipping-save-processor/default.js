@@ -9,8 +9,6 @@ define([
         'Magento_Checkout/js/model/payment/method-converter',
         'Magento_Checkout/js/model/error-processor',
         'Magento_Checkout/js/model/full-screen-loader',
-        'Magento_Checkout/js/action/select-billing-address',
-        'Magento_Checkout/js/model/shipping-save-processor/payload-extender'
     ], function (
         $,
         ko,
@@ -20,9 +18,7 @@ define([
         paymentService,
         methodConverter,
         errorProcessor,
-        fullScreenLoader,
-        selectBillingAddressAction,
-        payloadExtender
+        fullScreenLoader
     ) {
         'use strict';
         return {
@@ -67,10 +63,6 @@ define([
                         }
                     }
                 };
-
-                payloadExtender(payload);
-
-                fullScreenLoader.startLoader();
 
                 return storage.post(
                     resourceUrlManager.getUrlForSetShippingInformation(quote),
